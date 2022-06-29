@@ -6,7 +6,7 @@
 /*   By: ljahn <ljahn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 08:58:48 by ljahn             #+#    #+#             */
-/*   Updated: 2022/06/28 10:15:54 by ljahn            ###   ########.fr       */
+/*   Updated: 2022/06/28 21:35:06 by ljahn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,18 @@ static void	free_all(char **splitters)
 	free(splitters);
 }
 
-t_link	**assign_splitters(char *av, int *split_num)
+t_link	**assign_splitters(char *av, t_args *r)
 {
 	t_link	**head;
 	char	**splitters;
 	int		i;
-	int		iteri;
 
 	i = 0;
 	splitters = ft_split(av, ' ');
-	iteri = strstrlen(splitters);
-	arg_validation(iteri, splitters);
+	r->iteri = strstrlen(splitters);
+	arg_validation(r->iteri, splitters);
 	head = malloc(sizeof(t_link *));
-	while (i < iteri)
+	while (i < r->iteri)
 	{
 		if (i == 0)
 			*head = new_link(atoi(splitters[i]));
@@ -58,7 +57,6 @@ t_link	**assign_splitters(char *av, int *split_num)
 		i++;
 	}
 	free_all(splitters);
-	*split_num = iteri;
 	return (head);
 }
 

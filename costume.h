@@ -6,7 +6,7 @@
 /*   By: ljahn <ljahn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 08:52:37 by ljahn             #+#    #+#             */
-/*   Updated: 2022/06/28 21:07:49 by ljahn            ###   ########.fr       */
+/*   Updated: 2022/06/29 08:58:44 by ljahn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,16 @@ typedef struct s_min
 
 typedef struct s_args
 {
+	int		iteri;
 	int		shell;
-	int		split_num;
 	t_link	*a;
 	t_link	*b;
 }	t_args;
+
+//			small_sort.c
+void	fiver_sort(t_link **a, t_link **b);
+void	rd(t_link **head);
+void	three_sort(t_link **a, t_link **b);
 
 //			validation.c
 void	validation(int ac, char **av);
@@ -49,7 +54,7 @@ void	check_out_of_range(char **av, int i);
 void	check_not_numeric(char **av, int i, int j);
 
 //			freeing.c
-t_link	**assign_splitters(char *av, int *split_num);
+t_link	**assign_splitters(char *av, t_args *r);
 int		contains(char *str, char c);
 void	ft_linkclear(t_link	**lst);
 
@@ -70,10 +75,10 @@ void	index_link(t_link **head);
 
 //			push_swap.c
 void	sw(t_link **s);
+void	sb(t_link **s);
 void	ss(t_link **a, t_link **b);
 void	pb(t_link **a, t_link **b);
 void	pa(t_link **a, t_link **b);
-void	rd(t_link **head);
 void	ru(t_link **head);
 void	rbd(t_link **a, t_link **b);
 void	rbu(t_link **a, t_link **b);

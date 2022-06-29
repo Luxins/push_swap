@@ -6,7 +6,7 @@
 /*   By: ljahn <ljahn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 09:13:36 by ljahn             #+#    #+#             */
-/*   Updated: 2022/06/28 09:16:27 by ljahn            ###   ########.fr       */
+/*   Updated: 2022/06/29 08:58:12 by ljahn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,25 @@ void	sw(t_link **s)
 	t_link	*second;
 	t_link	*temp;
 
+	ft_putstr_fd("sa\n", 1);
+	if (*s && (*s)->next)
+	{
+		first = *s;
+		second = first->next;
+		temp = first;
+		*s = second;
+		first->next = second->next;
+		second->next = temp;
+	}
+}
+
+void	sb(t_link **s)
+{
+	t_link	*first;
+	t_link	*second;
+	t_link	*temp;
+
+	ft_putstr_fd("sb\n", 1);
 	if (*s && (*s)->next)
 	{
 		first = *s;

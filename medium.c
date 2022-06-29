@@ -6,7 +6,7 @@
 /*   By: ljahn <ljahn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 09:11:13 by ljahn             #+#    #+#             */
-/*   Updated: 2022/06/28 21:06:03 by ljahn            ###   ########.fr       */
+/*   Updated: 2022/06/29 08:49:18 by ljahn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	shell_or_norm(int ac, char **av, t_args *r)
 
 	if (ac == 2 && contains(av[1], ' '))
 	{
-		to_free = assign_splitters(av[1], &r->split_num);
+		to_free = assign_splitters(av[1], r);
 		r->a = *to_free;
 		free(to_free);
 		allready_sorted(&r->a);
@@ -61,9 +61,20 @@ int	main(int ac, char **av)
 	r.b = NULL;
 	index_link(&r.a);
 	if (!r.shell)
-		binary_sort(&r.a, &r.b, ac - 1);
+	{
+		if (ac - 1 == 5)
+			fiver_sort(&r.a, &r.b);
+		else if (ac - 1 == 3)
+			three_sort(&r.a, &r.b);
+		else
+			binary_sort(&r.a, &r.b, ac - 1);
+	}
+	else if (r.iteri == 5)
+		fiver_sort(&r.a, &r.b);
+	else if (r.iteri == 3)
+		three_sort(&r.a, &r.b);
 	else
-		binary_sort(&r.a, &r.b, r.split_num);
+		binary_sort(&r.a, &r.b, r.iteri);
 	ft_linkclear(&r.a);
 	ft_linkclear(&r.b);
 	return (0);

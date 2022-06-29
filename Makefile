@@ -1,5 +1,5 @@
 OBJS = medium.o checkers.o validation.o init_link.o utils_main.o \
-		push_swap.o sort.o freeing.o
+		push_swap.o sort.o freeing.o small_sort.o
 DIRS = libft/libft.a ft_printf/libftprintf.a
 NAME = push_swap
 #CFLAGS = -Werror -Wextra -Wall
