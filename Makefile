@@ -5,6 +5,7 @@ NAME = push_swap
 #CFLAGS = -Werror -Wextra -Wall
 
 all: $(OBJS)
+	$(MAKE) -C ft_printf
 	$(MAKE) -C libft
 	gcc -g $(OBJS) -o $(NAME) $(DIRS)
 
